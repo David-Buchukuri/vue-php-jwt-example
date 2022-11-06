@@ -1,25 +1,30 @@
-<script setup>
-import { RouterLink, RouterView } from 'vue-router'
-import HelloWorld from './components/HelloWorld.vue'
-</script>
-
 <template>
-  <header>
-    <img alt="Vue logo" class="logo" src="@/assets/logo.svg" width="125" height="125" />
-
-    <div class="wrapper">
-      <HelloWorld msg="You did it!" />
-
-      <nav>
-        <RouterLink to="/">Home</RouterLink>
-        <RouterLink to="/about">About</RouterLink>
-      </nav>
-    </div>
-  </header>
-
-  <RouterView />
+  <!-- <RouterView /> -->
+  <button @click="sendLoginRequest">login</button>
+  <button @click="sendAuthRequest">access some info</button>
 </template>
 
+<script setup>
+import axios from "axios";
+axios.defaults.withCredentials = true;
+
+const sendLoginRequest = async () => {
+  const response = await axios.post("http://127.0.0.1:8000/api/login", {
+    email: "dato@dato.io",
+    password: "dato",
+  });
+
+  console.log(response);
+};
+const sendAuthRequest = async () => {
+  const response = await axios.get(
+    "http://127.0.0.1:8000/api/auth-protected-route"
+  );
+
+  console.log(response);
+};
+</script>
+<!-- 
 <style scoped>
 header {
   line-height: 1.5;
@@ -82,4 +87,4 @@ nav a:first-of-type {
     margin-top: 1rem;
   }
 }
-</style>
+</style> -->
