@@ -1,10 +1,14 @@
 <template>
   <nav>
     <router-link to="/"> home </router-link>
-    <router-link to="/profile"> profile </router-link>
+    <router-link to="/profile" v-if="authStore.authenticated">
+      profile
+    </router-link>
     <router-link to="/register"> register </router-link>
     <router-link to="/login"> login </router-link>
-    <button @click="logout" to="/">logout</button>
+    <button @click="logout" to="/" v-if="authStore.authenticated">
+      logout
+    </button>
   </nav>
   <router-view />
 </template>
@@ -12,6 +16,9 @@
 <script setup>
 import axiosInstance from "@/config/axios";
 import { useRouter } from "vue-router";
+import { useAuthStore } from "@/stores/auth";
+
+const authStore = useAuthStore();
 
 const router = useRouter();
 
