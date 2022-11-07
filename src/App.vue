@@ -1,15 +1,17 @@
 <template>
-  <router-view />
+  <router-view v-if="loadRoutes" />
 </template>
 
 <script setup>
-import { onMounted } from "vue";
+import { onMounted, ref } from "vue";
 import { useAuthStore } from "@/stores/auth";
 import axios from "axios";
 
 axios.defaults.withCredentials = true;
 
 const authStore = useAuthStore();
+
+const loadRoutes = ref(false);
 
 onMounted(async () => {
   try {
@@ -24,6 +26,8 @@ onMounted(async () => {
   } catch (err) {
     authStore.authenticated = false;
     console.log(err);
+  } finally {
+    loadRoutes.value = true;
   }
 });
 </script>
