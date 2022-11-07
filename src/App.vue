@@ -8,8 +8,10 @@
 import axios from "axios";
 axios.defaults.withCredentials = true;
 
+const backUrl = import.meta.env.VITE_BASE_BACKEND_URL;
+
 const sendLoginRequest = async () => {
-  const response = await axios.post("http://127.0.0.1:8000/api/login", {
+  const response = await axios.post(`${backUrl}/api/login`, {
     email: "dato@dato.io",
     password: "dato",
   });
@@ -17,9 +19,7 @@ const sendLoginRequest = async () => {
   console.log(response);
 };
 const sendAuthRequest = async () => {
-  const response = await axios.get(
-    "http://127.0.0.1:8000/api/auth-protected-route"
-  );
+  const response = await axios.get(`${backUrl}/api/auth-protected-route`);
 
   console.log(response);
 };
