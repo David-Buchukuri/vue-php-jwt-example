@@ -18,6 +18,9 @@
 <script setup>
 import axiosInstance from "@/config/axios";
 import { ref } from "vue";
+import { useAuthStore } from "@/stores/auth";
+
+const authStore = useAuthStore();
 
 const email = ref("");
 const password = ref("");
@@ -28,6 +31,7 @@ const onSumbit = async () => {
       email: email.value,
       password: password.value,
     });
+    authStore.authenticated = true;
     console.log(response);
   } catch (err) {
     console.log(err);
