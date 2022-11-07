@@ -22,14 +22,11 @@
 
 <script setup>
 import axiosInstance from "@/config/axios";
-import { useAuthStore } from "../stores/auth";
 import { ref } from "vue";
 
 const email = ref("");
 const password = ref("");
 const name = ref("");
-
-const authStore = useAuthStore();
 
 const onSumbit = async () => {
   try {
@@ -71,7 +68,7 @@ button {
   background-color: hsla(160, 100%, 37%, 1);
   color: white;
   padding: 5px 15px 5px 15px;
-
+  cursor: pointer;
   font-size: 18px;
   border-radius: 10px;
 }
