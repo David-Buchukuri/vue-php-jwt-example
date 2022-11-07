@@ -24,7 +24,8 @@ const router = useRouter();
 
 const logout = async () => {
   try {
-    axiosInstance.get("/logout");
+    await axiosInstance.get("/logout");
+    authStore.authenticated = false;
   } catch (err) {
     console.log(err);
   } finally {
