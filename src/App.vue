@@ -4,6 +4,7 @@
     <router-link to="/profile" v-if="authStore.authenticated">
       profile
     </router-link>
+    <router-link to="/delete-items"> delete items </router-link>
     <router-link to="/register"> register </router-link>
     <router-link to="/login"> login </router-link>
     <button @click="logout" to="/" v-if="authStore.authenticated">

@@ -1,6 +1,6 @@
 <template>
   <main>
-    <h1>Homepage 💀️</h1>
+    <h1>Homepage</h1>
     <p>
       Lorem ipsum dolor sit amet consectetur adipisicing elit. Nihil quasi
       incidunt voluptatem quo harum magnam est modi ab repellendus consequatur

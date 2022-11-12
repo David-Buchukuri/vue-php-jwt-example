@@ -3,6 +3,7 @@ import HomeView from "../views/HomeView.vue";
 import LoginView from "../views/LoginView.vue";
 import ProfileView from "../views/ProfileView.vue";
 import RegisterView from "../views/RegisterView.vue";
+import DeleteItemsView from "../views/DeleteItemsView.vue";
 import isAuthenticated from "./guards";
 import { useAuthStore } from "@/stores/auth";
 
@@ -22,6 +23,11 @@ const router = createRouter({
       name: "profile",
       component: ProfileView,
       beforeEnter: isAuthenticated,
+    },
+    {
+      path: "/delete-items",
+      name: "delete-items",
+      component: DeleteItemsView,
     },
     {
       path: "/login",
