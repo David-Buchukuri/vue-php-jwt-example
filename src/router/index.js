@@ -6,8 +6,8 @@ import RegisterView from "../views/RegisterView.vue";
 import DeleteItemsView from "../views/DeleteItemsView.vue";
 import isAuthenticated from "./guards";
 import { useAuthStore } from "@/stores/auth";
-
 import axios from "axios";
+
 axios.defaults.withCredentials = true;
 
 const router = createRouter({
@@ -43,10 +43,10 @@ const router = createRouter({
 });
 
 // before loading any route we need to determine if user is authenticated or not
-// if the aplication is being loaded for the first time, auth state is set to null,
+// if the application is being loaded for the first time, auth state is set to null,
 // we need to check if user is authenticated, based on sending get request to /me
 // and then set auth state to true or false based on response,
-// we need that state beforehand because we use that state in route specific guards
+// we need that state beforehand because we use that state to protect our routes and manipulate ui
 
 router.beforeEach(async (to, from, next) => {
   const authStore = useAuthStore();
